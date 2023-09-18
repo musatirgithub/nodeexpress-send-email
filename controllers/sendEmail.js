@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 
 const sendEmail = async (req,res)=>{
-    const testAccount = await nodemailer.createTestAccount();
+    let testAccount = await nodemailer.createTestAccount();
 
     const transporter = nodemailer.createTransport({
         host: process.env.ETHEREAL_HOST,
@@ -13,8 +13,15 @@ const sendEmail = async (req,res)=>{
         }
     });
 
+    let info = await transporter.sendMail({
+        from:'"Addicted to coding addict"<addictedtocodingaddict@gmail.com>',
+        to:"bar@example.com, musatir@yahoo.com",
+        subject:"Hello dear me!",
+        // text:"Sending emails with node.js", we can send either text or html
+        html:"<h2>Sending emails with node.js</h2>"
 
-    res.send('send email func')
+    })
+    res.json(info)
 }
 
 
