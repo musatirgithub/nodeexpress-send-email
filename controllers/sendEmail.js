@@ -26,14 +26,12 @@ const sendEmailEthereal = async (req,res)=>{
         }
     });
 
-
     let info = await transporter.sendMail({
         from: '"Coding Addicts addict" <musatir@gmail.com>',
         to: 'bar@example.com, musatir@yahoo.com',
         subject: 'Merhaba',
         html: '<h2>Hello World.</h2>',
       });
-    
       res.json(info);
 }
 
